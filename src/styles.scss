@@ -2,5 +2,8 @@
 @import "node_modules/h8k-design/lib/index.scss";
 
 :root {
-
+    body {
+        background: var(--app-background);
+        min-height: calc(100vh);
+    }
 }

@@ -1,0 +1,24 @@
+.login-body{
+    background-image: url(../../../../assets/images/polaris-fondo.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 11, 16, 0.9);
+    background-blend-mode: multiply;
+    height: 100vh;
+}
+
+.login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+
+.login-form{
+    margin: 0;
+}

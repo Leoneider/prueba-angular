@@ -4,3 +4,43 @@
   Remplazar [index] por el valor ejemplo "user-list__table-item-0"
 -->
 
+
+
+<div class="card w-50 mx-auto pb-30">
+  <h3 class="pa-30">LIST OF USERS</h3>
+
+  <input type="text" class="white large outlined ma-30" placeholder="Search for name" name="searchUser" [formControl]="searchUser">
+
+  <table>
+      <thead>
+      <tr>
+          <th class="text">avatar</th>
+          <th class="text">Name</th>
+          <th class="text">Email</th>
+        
+          <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users | filterUserByName:filter; let i = index">
+          <td>
+            <img class="avatar" src="{{ user.avatar}}" alt="avatar">
+            
+          </td>
+          <td>{{ user.first_name}}</td>
+          <td>{{ user.email}}</td>
+     
+          <td> <button class="danger text" (click)="deleteUser(i)">
+            Delete
+        </button></td>
+      </tr>
+     
+      </tbody>
+  </table>
+</div>
+
+
+
+<div *ngIf="isDeleteUser" class="alert">
+  {{ messageAlert }}
+</div>

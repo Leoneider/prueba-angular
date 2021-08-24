@@ -2,3 +2,40 @@
   Recuerde conservar los id, no deben ser modificados
   ids = login__email, login__password, login__password-error, login__email-error, login__btn-login
 -->
+
+
+<form [formGroup]="loginForm">
+  <div class="login-body">
+    <div class="login-wrapper">
+      <div class="card" style="background-color: transparent !important; padding: 15px;">
+    
+          <h3 class="mt-0 mb-0" style="color: aliceblue; background-color: none;">Bienvenido !</h3>
+
+       
+          <div>
+            <label>
+              <input id="login__email" type="text" class="white large" [class.error]="!emailValid" placeholder="Correo" formControlName="email">
+              <p *ngIf="emailRequired" id="login__email-error" class="form-hint error-text" id="hint-input">Email is required</p>
+              <p *ngIf="emailMinLength" id="login__email-error" class="form-hint error-text" id="hint-input">The minimum of characters will be 8</p>
+            </label>
+          </div>
+        
+          <div>
+            <label>
+              <input id="login__password" type="text" class="white large" [class.error]="!passwordValid" placeholder="Contraseña" formControlName="password">
+              <p *ngIf="passwordRequired" id="login__password-error" class="form-hint error-text" id="hint-input">Password is required</p>
+              <p *ngIf="passwordMinLength" id="login__password-error" class="form-hint error-text" id="hint-input">The minimum of characters will be 8</p>
+            </label>
+          </div>
+       
+          <div>
+            <button id="login__btn-login" type="button" (click)="submitLoginForm()" [disabled]="!loginForm.valid">Ingresar</button>
+          </div>
+         
+
+    
+      </div>
+    </div>
+  </div>
+
+</form> 

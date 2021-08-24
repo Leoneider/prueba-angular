@@ -8,7 +8,7 @@ import { LoginComponent } from '@feature/login/login/login.component';
 import { SELECTORS } from '../shared/util/selectors';
 import { SharedModule } from '@shared/shared.module';
 import { CoreModule } from '@core/core.module';
-import { TokenGuard } from '@core/guard/token/token.guard';
+import { TokenGuard } from '@core/guard/token.guard';
 import { eventInput } from '../shared/util/event-input';
 import { LoginService } from '@feature/login/shared/services/login/login.service';
 import { LoginMockService } from './data/login-mock.service';

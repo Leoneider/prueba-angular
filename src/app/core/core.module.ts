@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TokenGuard } from './guard/token.guard';
+import { TokenGuard } from './guard/token/token.guard';
 
 
 

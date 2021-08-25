@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeUserComponent } from './users/home-user/home-user.component';
-import { TokenGuard } from '@core/guard/token.guard';
+import { TokenGuard } from '@core/guard/token/token.guard';
 
 const routes: Routes = [
   {

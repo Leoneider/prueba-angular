@@ -8,7 +8,7 @@ import { LoginComponent } from '@feature/login/login/login.component';
 import { SELECTORS } from '../shared/util/selectors';
 import { SharedModule } from '@shared/shared.module';
 import { CoreModule } from '@core/core.module';
-import { TokenGuard } from '@core/guard/token.guard';
+import { TokenGuard } from '@core/guard/token/token.guard';
 import { eventInput } from '../shared/util/event-input';
 import { LoginService } from '@feature/login/shared/services/login/login.service';
 import { LoginMockService } from './data/login-mock.service';
@@ -57,7 +57,9 @@ describe('Login Page', () => {
     const inputPassword = SELECTORS.LOGIN.inputPassword();
     const inputBtnLogin = SELECTORS.LOGIN.btnLogin();
 
+
     fixture.detectChanges();
+
 
     expect(inputEmail?.tagName).toEqual('INPUT');
     expect(inputPassword?.tagName).toEqual('INPUT');
@@ -73,12 +75,13 @@ describe('Login Page', () => {
     const spyLogin = spyOn(loginService, 'login').and.callThrough();
     const { token } = new LoginMockService().login(null);
 
+
     eventInput(inputEmail, email);
     eventInput(inputPassword, password);
-
     btnLogin.click();
     fixture.detectChanges();
-    tick(3000);
+    tick(1000);
+
 
     expect(spyLogin).toHaveBeenCalled();
     expect(localStorage.getItem('token')).toEqual(token);
@@ -91,10 +94,12 @@ describe('Login Page', () => {
     const password = '123';
     let passwordError: HTMLDivElement;
 
+
     eventInput(inputPassword, password);
     btnLogin.click();
     fixture.detectChanges();
     passwordError = SELECTORS.LOGIN.inputPasswordError();
+
 
     expect(passwordError.textContent).toContain('The minimum of characters will be 8');
     expect(localStorage.getItem('token')).toBeNull();

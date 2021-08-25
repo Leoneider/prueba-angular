@@ -9,9 +9,9 @@
 <div class="card w-50 mx-auto pb-30">
   <h3 class="pa-30">LIST OF USERS</h3>
 
-  <input type="text" class="white large outlined ma-30" placeholder="Search for name" name="searchUser" [formControl]="searchUser">
+  <input id="user-list__filter" type="text" class="white large outlined ma-30" placeholder="Search for name" name="searchUser" [formControl]="searchUser">
 
-  <table>
+  <table id="user-list__table">
       <thead>
       <tr>
           <th class="text">avatar</th>
@@ -22,15 +22,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of users | filterUserByName:filter; let i = index">
+      <tr id="user-list__table-item-{{i}}" *ngFor="let user of users | filterUserByName:filter; let i = index">
           <td>
-            <img class="avatar" src="{{ user.avatar}}" alt="avatar">
-            
+            <img id="user-list__table-item-{{i}}-avatar" class="avatar" src="{{ user.avatar }}" alt="avatar">
           </td>
-          <td>{{ user.first_name}}</td>
-          <td>{{ user.email}}</td>
+          <td id="user-list__table-item-{{i}}-first_name">{{ user.first_name}}</td>
+          <td id="user-list__table-item-{{i}}-email">{{ user.email}}</td>
      
-          <td> <button class="danger text" (click)="deleteUser(i)">
+          <td> <button id="user-list__table-item-{{i}}-btn-delete" class="danger text" (click)="deleteUser(i)">
             Delete
         </button></td>
       </tr>

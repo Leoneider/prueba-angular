@@ -5,4 +5,36 @@
 
 <div class="card w-50 mx-auto pb-30">
   <h3 class="pa-30">CREATE USE</h3>
+
+  <form [formGroup]="userForm"  (submit)="submitUserForm()">
+    <section class="layout-row align-items-start justify-content-center">
+      <label>
+        <input type="text" class="white large" id="user-create__name" placeholder="Name" formControlName="name"/>
+        <div *ngIf="nameRequired" class="form-hint error-text" id="user-create__name-error">Name is required</div>
+      </label>
+    </section>
+
+    <section class="layout-row align-items-start justify-content-center">
+      <label>
+        <input type="text" class="white large" id="user-create__job" placeholder="Job" formControlName="job"/>
+        <p *ngIf="jobRequired" class="form-hint error-text" id="user-create__job-error">Job is required</p>
+      </label>
+    </section>
+
+    <section class="layout-row align-items-start justify-content-center">
+      <label>
+        <button [disabled]="userForm.invalid" id="user-create__btn-create" type="submit" class="secondary flat">Add User</button>
+      </label>
+    </section>
+
+
+
+    
+  
+  </form>
+</div>
+
+
+<div *ngIf="isDeleteUser" class="alert">
+  {{ messageAlert }}
 </div>

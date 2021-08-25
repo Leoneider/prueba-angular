@@ -1,3 +1,4 @@
+import { LoginResponse } from './../../models/login.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TokenService } from '@core/services/token.service';
@@ -14,14 +15,21 @@ export class LoginService {
   /**
   * El nombre de este metodo no debería ser cambiado, pero de ser necesario podrías cambiar la firma
    * */
-  public login(data:any) {
-    return this.httpService.post(`${environment.API}/login`, data).pipe(
-      tap(( data:{token:string}) => {
-        const token = data.token;
-        this.tokenService.saveToken(token);
+  public login(data:any):Promise<LoginResponse> {
+    return new Promise ((resolve) => {
+      this.httpService.post(`${environment.API}/login`, data).subscribe( (res:LoginResponse) => {
+        resolve(res)
       })
-
-    );
+          
+    })
+    // return this.httpService.post(`${environment.API}/login`, data).pipe(
+    //   tap(( data:{token:string}) => {
+    //     const token = data.token;
+    //     console.log(token);
+        
+    //     // this.tokenService.saveToken(token);
+    //   })
+    // );
   }
 
   hasSession() {

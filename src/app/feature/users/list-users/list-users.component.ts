@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsersService } from '../create-user/shared/services/users/users.service';
 import { debounceTime } from 'rxjs/operators';
+import { User } from '../create-user/shared/models/user.interface';
 
 
 @Component({
@@ -17,27 +18,23 @@ export class ListUsersComponent implements OnInit {
 
   searchUser = new FormControl('');
 
-  users:any[] =[] 
+  users:User[] =[] 
 
   filter:string = "";
 
-  ngOnInit(){
+  async ngOnInit(){
     this.getUsers();
-
     this.searchUser.valueChanges.pipe( debounceTime(300) ).subscribe( res => {
       this.filter = res;
     })
     
   }
 
+  async getUsers(){
+    this.users =  (await this.usersService.getUsers()).data;
 
-
-
-  getUsers(){
-    // this.users$ = this.usersService.getUsers();
-    this.usersService.getUsers().subscribe(data => {
-      this.users = data;
-    });
+    console.log("USERS", this.users);
+    
   }
 
 

@@ -4,7 +4,7 @@
 -->
 
 
-<form [formGroup]="loginForm">
+<form [formGroup]="loginForm" (submit)="sendLoginForm()">
   <div class="login-body">
     <div class="login-wrapper">
       <div class="card" style="background-color: transparent !important; padding: 15px;">
@@ -14,22 +14,22 @@
        
           <div>
             <label>
-              <input id="login__email" type="text" class="white large" [class.error]="!emailValid" placeholder="Correo" formControlName="email">
-              <p *ngIf="emailRequired" id="login__email-error" class="form-hint error-text" id="hint-input">Email is required</p>
-              <p *ngIf="emailMinLength" id="login__email-error" class="form-hint error-text" id="hint-input">The minimum of characters will be 8</p>
+              <input id="login__email" type="text" class="white large" [class.error]="emailInvalid" placeholder="Correo" formControlName="email">
+              <span *ngIf="emailRequired" id="login__email-error" class="form-hint error-text">Email is required</span>
+              <p *ngIf="emailMinLength" id="login__email-error" class="form-hint error-text">The minimum of characters will be 8</p>
             </label>
           </div>
         
           <div>
             <label>
-              <input id="login__password" type="text" class="white large" [class.error]="!passwordValid" placeholder="Contraseña" formControlName="password">
-              <p *ngIf="passwordRequired" id="login__password-error" class="form-hint error-text" id="hint-input">Password is required</p>
-              <p *ngIf="passwordMinLength" id="login__password-error" class="form-hint error-text" id="hint-input">The minimum of characters will be 8</p>
+              <input id="login__password" type="text" class="white large" [class.error]="passwordInvalid" placeholder="Contraseña" formControlName="password">
+              <p *ngIf="passwordRequired" id="login__password-error"  class="form-hint error-text">Password is required</p>
+              <div *ngIf="passwordMinLength" id="login__password-error" name="inputPasswordError" class="form-hint error-text">The minimum of characters will be 8</div>
             </label>
           </div>
        
           <div>
-            <button id="login__btn-login" type="button" (click)="submitLoginForm()" [disabled]="!loginForm.valid">Ingresar</button>
+            <button id="login__btn-login" name="btnLogin" type="submit">Ingresar</button>
           </div>
          
 

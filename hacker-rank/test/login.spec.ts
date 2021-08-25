@@ -57,9 +57,7 @@ describe('Login Page', () => {
     const inputPassword = SELECTORS.LOGIN.inputPassword();
     const inputBtnLogin = SELECTORS.LOGIN.btnLogin();
 
-
     fixture.detectChanges();
-
 
     expect(inputEmail?.tagName).toEqual('INPUT');
     expect(inputPassword?.tagName).toEqual('INPUT');
@@ -75,13 +73,12 @@ describe('Login Page', () => {
     const spyLogin = spyOn(loginService, 'login').and.callThrough();
     const { token } = new LoginMockService().login(null);
 
-
     eventInput(inputEmail, email);
     eventInput(inputPassword, password);
+
     btnLogin.click();
     fixture.detectChanges();
-    tick(1000);
-
+    tick(3000);
 
     expect(spyLogin).toHaveBeenCalled();
     expect(localStorage.getItem('token')).toEqual(token);
@@ -94,12 +91,10 @@ describe('Login Page', () => {
     const password = '123';
     let passwordError: HTMLDivElement;
 
-
     eventInput(inputPassword, password);
     btnLogin.click();
     fixture.detectChanges();
     passwordError = SELECTORS.LOGIN.inputPasswordError();
-
 
     expect(passwordError.textContent).toContain('The minimum of characters will be 8');
     expect(localStorage.getItem('token')).toBeNull();

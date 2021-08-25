@@ -7,7 +7,7 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class FilterUserByNamePipe implements PipeTransform {
   transform(items: any[], filter: string): any {
-    if (!items || !filter) {
+    if (!items || !filter || filter.length < 3) {
       return items;
     }
     return items.filter((item) => item.first_name.indexOf(filter) !== -1);

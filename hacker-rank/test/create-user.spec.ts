@@ -51,6 +51,13 @@ describe('Create User', () => {
 
     fixture.detectChanges();
 
+    console.log("inputName?.tagName", inputName?.tagName);
+    console.log("inputJob?.tagName", inputJob?.tagName);
+    console.log("btnCreate?.tagName", btnCreate?.tagName);
+    
+    
+    
+
     expect(inputName?.tagName).toEqual('INPUT');
     expect(inputJob?.tagName).toEqual('INPUT');
     expect(btnCreate?.tagName).toEqual('BUTTON');
@@ -68,7 +75,6 @@ describe('Create User', () => {
     inputNameError = SELECTORS.USER.CREATE.inputNameError();
     inputJobError = SELECTORS.USER.CREATE.inputJobError();
     btn = SELECTORS.USER.CREATE.btnCreate();
-
 
     expect(btn.disabled).toBeTrue();
     expect(inputNameError.textContent).toContain('Name is required');
@@ -97,7 +103,6 @@ describe('Create User', () => {
     btn = SELECTORS.USER.CREATE.btnCreate();
     btn.click();
     tick(1000);
-
 
     expect(btn.disabled).toBeFalse();
     expect(inputNameError).toBeNull();

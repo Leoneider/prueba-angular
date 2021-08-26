@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { SELECTORS } from '../shared/util/selectors';
-import { NavBarComponent } from '@feature/users/nav-bar/nav-bar.component';
+import { NavBarComponent } from '@shared/components/nav-bar/nav-bar.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Nav Bar', () => {

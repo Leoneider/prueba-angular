@@ -24,10 +24,14 @@ export class ListUsersComponent implements OnInit {
 
   async ngOnInit(){
     this.getUsers();
+    this.inputSearch();
+    
+  }
+
+  inputSearch(){
     this.searchUser.valueChanges.pipe( debounceTime(300) ).subscribe( res => {
       this.filter = res;
     })
-    
   }
 
   async getUsers(){
